@@ -48,41 +48,4 @@
     <script src="script.js"></script>
 </body>
 </html>
-    <script>
-        const noButton = document.getElementById('no');
-        const yesButton = document.getElementById('yes');
-        const congratsMessage = document.getElementById('congrats');
-
-        // Ensure the DOM is fully loaded before attaching event listeners
-        document.addEventListener('DOMContentLoaded', function() {
-            yesButton.addEventListener('click', function() {
-                // Hide 'No' button when 'Yes' is clicked
-                noButton.style.display = 'none';
-
-                // Show the congratulations message
-                congratsMessage.style.display = 'block';
-
-                // Generate the QR Code for the invitation
-                const qrData = 'Welcome, You are Invited'; // Message for the QR code
-                const qrcodeContainer = document.getElementById('qrcode');
-
-                // Clear previous QR code if it exists
-                qrcodeContainer.innerHTML = '';
-
-                // Generate new QR code
-                const qrcode = new QRCode(qrcodeContainer, {
-                    text: qrData,
-                    width: 128,
-                    height: 128,
-                    colorDark: "#000000",
-                    colorLight: "#ffffff",
-                    correctLevel: QRCode.CorrectLevel.H
-                });
-            });
-
-            noButton.addEventListener('click', function(e) {
-                e.preventDefault(); // Prevent default action for 'no' button
-            });
-        });
-    </script>
 
