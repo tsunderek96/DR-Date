@@ -14,24 +14,20 @@ noButton.addEventListener('mouseover', () => {
 });
 
 yesButton.addEventListener('click', () => {
-    // Hide 'No' button when 'Yes' is clicked
     noButton.style.display = 'none';
-
-    // Show the congratulations message
     congratsMessage.style.display = 'block';
-
-    // Generate the QR Code for the invitation
-    const qrData = 'Welcome to the Valentine’s Invitation! 🎉';
+    
     const qrcodeContainer = document.getElementById('qrcode');
+    qrcodeContainer.innerHTML = ''; // Clear previous content
 
-    // Clear previous QR code if it exists
-    qrcodeContainer.innerHTML = '';
+    // Text to encode in the QR code
+    const qrData = "Hi Ms Roxanne Lee, thank you for accepting the kind invitation.";
 
-    // Generate new QR code
-    const qrcode = new QRCode(qrcodeContainer, {
+    // Generate QR code
+    new QRCode(qrcodeContainer, {
         text: qrData,
-        width: 128,
-        height: 128,
+        width: 200,
+        height: 200,
         colorDark: "#000000",
         colorLight: "#ffffff",
         correctLevel: QRCode.CorrectLevel.H
