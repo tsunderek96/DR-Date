@@ -40,13 +40,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Generate the QR code with the final confirmation message
             const qrData = "Thank you for accepting the invitation, Ms. Your attendance has been confirmed, see you there!";
-            new QRCode(qrcodeContainer, {
-                text: qrData,
+
+            // Use the QRCode.toCanvas method (new approach)
+            QRCode.toCanvas(qrcodeContainer, qrData, {
                 width: 200,
                 height: 200,
-                colorDark: "#000000",
-                colorLight: "#ffffff",
-                correctLevel: 'H' // Using 'H' for higher error correction
+                color: {
+                    dark: "#000000", // Dark color
+                    light: "#ffffff" // Light color
+                }
+            }, function(error) {
+                if (error) console.error(error);
             });
         }, 3000); // Delay QR code generation until after biometrics confirmation
     });
