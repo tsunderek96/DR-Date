@@ -99,10 +99,10 @@ body {
 
 /* Sumikko Gurashi Icons */
 .sumikko-gurashi-icons {
-    position: absolute;
-    top: 10%;
-    left: 5%;
-    z-index: 1;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
 }
 
 .sumikko-image {
@@ -111,7 +111,7 @@ body {
 }
 
 .sumikko-icon {
-    width: 50px;
+    width: 100px;
     margin: 10px;
 }
 
