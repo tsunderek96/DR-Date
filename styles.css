@@ -94,8 +94,17 @@ body {
 
 /* QR Code Container */
 #qr-code {
-    margin-top: 20px;
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;     /* Centers vertically */
+    height: 100vh;           /* Take full height of the viewport */
+    text-align: center;      /* Ensure the text is centered */
 }
+
+#qrcode {
+    margin-top: 20px; /* Optional: Adjust space above the QR code */
+}
+
 
 /* Sumikko Gurashi Icons */
 .sumikko-gurashi-icons {
