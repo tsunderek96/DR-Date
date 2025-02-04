@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #fff0f5;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.title {
+    font-size: 2rem;
+    color: #ff1493;
+    margin-bottom: 20px;
+}
+
+.btn {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.yes-btn {
+    background-color: #ff69b4;
+    color: white;
+}
+
+.no-btn {
+    background-color: #ff6347;
+    color: white;
+}
+
+.no-btn:hover {
+    background-color: #ff4500;
+}
+
+.congrats-message {
+    display: none;
+    font-size: 1.5rem;
+    color: #ff1493;
+    font-weight: bold;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
