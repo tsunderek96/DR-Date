@@ -7,12 +7,13 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden; /* Prevent scrolling */
+    position: relative;
 }
 
 /* Container */
 .container {
     position: relative;
-    top: 30%;
+    top: 20%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 2;
@@ -87,6 +88,24 @@ body {
 /* QR Code Container */
 #qr-code {
     margin-top: 20px;
+}
+
+/* Sumikko Gurashi Icons */
+.sumikko-gurashi-icons {
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    z-index: 1;
+}
+
+.sumikko-image {
+    width: 200px;
+    margin: 10px;
+}
+
+.sumikko-icon {
+    width: 50px;
+    margin: 10px;
 }
 
 /* Cute character animation */
