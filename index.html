@@ -5,21 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Will you be my?</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-        }
-        #qr-code img {
-            max-width: 200px;
-            height: auto;
-            margin: 20px auto;
-        }
-        .container {
-            margin: 20px auto;
-        }
-    </style>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/build/qrcode.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -29,9 +15,9 @@
         <button id="no" class="btn no-btn">No 😢</button>
     </div>
 
-    <div id="congrats" class="congrats-message" style="display:none;">
+    <div id="congrats" class="congrats-message">
         <h2>YAY! You said YES! 💘</h2>
-        <p>This is an official invitation, Ms. Roxanne Lee. Kindly bring along this invitation and yourself. Have a great evening! 🌟</p>
+        <p>This is an official invitation, Ms Roxanne Lee. Kindly bring along this invitation and yourself. Have a great evening! 🌟</p>
 
         <!-- Location -->
         <div id="map-location">
@@ -40,25 +26,28 @@
         </div>
 
         <!-- QR Code Section -->
-        <div id="qr-code">
+        <!-- QR Code Section -->
+        <div id="qr-code" style="text-align: center;">
             <h3>Your Invitation QR Code:</h3>
-            <img src="file-F51Rj4T65fWvrJnQUSYj31" alt="QR Code">
+            <img src="dinner_date_qr.png" alt="Invitation QR Code" style="margin: auto; display: block;">
         </div>
+
+        <!-- Biometric Messages -->
+        <div id="biometric-message" class="message">Verifying Biometrics...</div>
+        <div id="biometric-confirmation" class="message">Biometrics Confirmed</div>
     </div>
 
-    <script>
-        const yesButton = document.getElementById('yes');
-        const noButton = document.getElementById('no');
-        const congratsMessage = document.getElementById('congrats');
+    <div class="sumikko-gurashi-icons">
+        <img src="https://static.bangkokpost.com/media/content/20240702/c1_2821146_240702051236_700.jpg" alt="Sumikko Gurashi" class="sumikko-image"/>
+        <img src="https://images.lifestyleasia.com/wp-content/uploads/sites/3/2024/08/16151934/449082517_347089875076699_1436271229495222917_n-1242x900.jpg" alt="Sumikko Icon 1" class="sumikko-icon"/>
+        <img src="https://yt3.googleusercontent.com/S6voSGOD-Ri2mFd-vFGUCtdYzokpiI7pG73TFmZvOo1uGxXSy1QxNW_VP2e6tWo5SP-XKBE8yQ=s160-c-k-c0x00ffffff-no-rj" alt="Sumikko Icon 2" class="sumikko-icon"/>
+    </div>
 
-        yesButton.addEventListener('click', () => {
-            noButton.style.display = 'none';
-            congratsMessage.style.display = 'block';
-        });
+    <div class="sumikko-gurashi-gifs">
+        <img src="https://i.pinimg.com/originals/38/02/ba/3802baa9d102bfd9ba517ff959e64905.gif" alt="Sumikko Gurashi GIF 1"/>
+        <img src="https://i.pinimg.com/originals/ee/b6/e5/eeb6e551c7d541ce4f0f989bdcf0d213.gif" alt="Sumikko Gurashi GIF 2"/>
+    </div>
 
-        noButton.addEventListener('click', () => {
-            alert('You can’t say no! Try again!');
-        });
-    </script>
+    <script src="javascript.js"></script>
 </body>
 </html>
