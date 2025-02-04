@@ -2,6 +2,10 @@
 body {
     font-family: 'Arial', sans-serif;
     background-color: #fdf2f5;
+    background-image: url('https://images2.alphacoders.com/130/1300030.png'); /* Sumikko Gurashi wallpaper */
+    background-size: cover; /* Ensure the wallpaper covers the full screen */
+    background-position: center center; /* Center the wallpaper */
+    background-attachment: fixed; /* Make background fixed for scrolling */
     color: #f279c6;
     text-align: center;
     margin: 0;
@@ -17,6 +21,9 @@ body {
     left: 50%;
     transform: translateX(-50%);
     z-index: 2;
+    background-color: rgba(255, 255, 255, 0.7); /* Slight background behind text */
+    padding: 20px;
+    border-radius: 15px;
 }
 
 /* Title and Subtitle */
@@ -106,6 +113,20 @@ body {
 .sumikko-icon {
     width: 50px;
     margin: 10px;
+}
+
+/* Add GIFs */
+.sumikko-gurashi-gifs {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.sumikko-gurashi-gifs img {
+    width: 150px;
+    height: 150px;
+    animation: bounce 2s ease infinite;
 }
 
 /* Cute character animation */
