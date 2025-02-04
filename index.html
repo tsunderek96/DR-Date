@@ -4,186 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Will you be my Valentine?</title>
+    <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/qrcode@1.4.4/build/qrcode.min.js"></script>
-    <style>
-        /* Global Styling */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #fdf2f5;
-            background-image: url('https://images2.alphacoders.com/130/1300030.png'); /* Sumikko Gurashi wallpaper */
-            background-size: cover; /* Ensure the wallpaper covers the full screen */
-            background-position: center center; /* Center the wallpaper */
-            background-attachment: fixed; /* Make background fixed for scrolling */
-            color: #f279c6;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh; /* Allow full page height */
-            overflow-x: hidden; /* Prevent horizontal scroll */
-        }
-
-        /* Container */
-        .container {
-            position: relative;
-            top: 20%;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 2;
-            background-color: rgba(255, 255, 255, 0.7); /* Slight background behind text */
-            padding: 20px;
-            border-radius: 15px;
-        }
-
-        /* Title and Subtitle */
-        .title {
-            font-size: 3rem;
-            color: #ff85b3;
-            margin-bottom: 20px;
-            animation: bounce 1.5s ease infinite;
-        }
-
-        .subtitle {
-            font-size: 1.5rem;
-            color: #ff69b4;
-            margin-bottom: 30px;
-        }
-
-        /* Buttons */
-        .btn {
-            font-size: 1.5rem;
-            padding: 15px 30px;
-            margin: 20px;
-            cursor: pointer;
-            border: none;
-            border-radius: 25px;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .yes-btn {
-            background-color: #ff87b7;
-            color: white;
-        }
-
-        .no-btn {
-            background-color: #ff4d6b;
-            color: white;
-        }
-
-        /* Button hover effects */
-        .no-btn:hover {
-            background-color: #ff1f3d;
-            transform: scale(1.1);
-        }
-
-        .yes-btn:hover {
-            background-color: #ff6297;
-            transform: scale(1.1);
-        }
-
-        /* Congrats Message */
-        .congrats-message {
-            display: none;
-            font-size: 1.8rem;
-            color: #ff6fa1;
-            background-color: #fff;
-            border-radius: 15px;
-            padding: 30px;
-            width: 60%;
-            margin: 0 auto;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-            animation: fadeIn 2s;
-        }
-
-        /* QR Code Container */
-        #qr-code {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-            visibility: hidden;  /* Initially hidden */
-        }
-
-        #qrcode {
-            margin-top: 20px;
-        }
-
-        /* Biometric Messages */
-        .message {
-            font-size: 20px;
-            font-weight: bold;
-            opacity: 0;
-            transition: opacity 1s ease;
-        }
-
-        .message.show {
-            opacity: 1;
-        }
-
-        /* Map Location */
-        #map-location {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        iframe {
-            border: 0;
-            width: 600px;
-            height: 450px;
-        }
-
-        /* Sumikko Gurashi Icons */
-        .sumikko-gurashi-icons {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .sumikko-image {
-            width: 200px;
-            margin: 10px;
-        }
-
-        .sumikko-icon {
-            width: 100px;
-            margin: 10px;
-        }
-
-        /* Add GIFs */
-        .sumikko-gurashi-gifs {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .sumikko-gurashi-gifs img {
-            width: 150px;
-            height: 150px;
-            animation: bounce 2s ease infinite;
-        }
-
-        /* Animations */
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-15px);
-            }
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-    </style>
 </head>
 <body>
     <div class="container">
@@ -197,85 +19,46 @@
         <h2>YAY! You said YES! 💘</h2>
         <p>This is an official invitation, please bring along this invitation and yourself. Have a great evening! 🌟</p>
 
-        <!-- Location -->
         <div id="map-location">
-            <h3>Location:</h3>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15954.812437498962!2d103.83321975!3d1.3547205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da172a10a45b51%3A0x80558c3ee2c43396!2sGood%20Bites!5e0!3m2!1sen!2ssg!4v1738671406051!5m2!1sen!2ssg" width="600" height="450" allowfullscreen="" loading="lazy"></iframe>
+            <!-- Map content here -->
         </div>
 
-        <!-- QR Code Section -->
         <div id="qr-code">
             <h3>Your Invitation QR Code:</h3>
             <div id="qrcode"></div>
         </div>
-
-        <!-- Biometric Messages -->
-        <div id="biometric-message" class="message">Verifying Biometrics...</div>
-        <div id="biometric-confirmation" class="message">Biometrics Confirmed</div>
-    </div>
-
-    <div class="sumikko-gurashi-icons">
-        <img src="https://static.bangkokpost.com/media/content/20240702/c1_2821146_240702051236_700.jpg" alt="Sumikko Gurashi" class="sumikko-image"/>
-        <img src="https://images.lifestyleasia.com/wp-content/uploads/sites/3/2024/08/16151934/449082517_347089875076699_1436271229495222917_n-1242x900.jpg" alt="Sumikko Icon 1" class="sumikko-icon"/>
-        <img src="https://yt3.googleusercontent.com/S6voSGOD-Ri2mFd-vFGUCtdYzokpiI7pG73TFmZvOo1uGxXSy1QxNW_VP2e6tWo5SP-XKBE8yQ=s160-c-k-c0x00ffffff-no-rj" alt="Sumikko Icon 2" class="sumikko-icon"/>
-    </div>
-
-    <div class="sumikko-gurashi-gifs">
-        <img src="https://i.pinimg.com/originals/38/02/ba/3802baa9d102bfd9ba517ff959e64905.gif" alt="Sumikko Gurashi GIF 1"/>
-        <img src="https://i.pinimg.com/originals/ee/b6/e5/eeb6e551c7d541ce4f0f989bdcf0d213.gif" alt="Sumikko Gurashi GIF 2"/>
     </div>
 
     <script>
+        const noButton = document.getElementById('no');
+        const yesButton = document.getElementById('yes');
+        const congratsMessage = document.getElementById('congrats');
+
+        // Ensure the DOM is fully loaded before attaching event listeners
         document.addEventListener('DOMContentLoaded', function() {
-            const noButton = document.getElementById('no');
-            const yesButton = document.getElementById('yes');
-            const congratsMessage = document.getElementById('congrats');
-            const qrcodeContainer = document.getElementById('qrcode');
-            const qrCodeContainer = document.getElementById('qr-code');
-
-            noButton.addEventListener('mouseover', () => {
-                const maxX = window.innerWidth - noButton.offsetWidth - 20;
-                const maxY = window.innerHeight - noButton.offsetHeight - 20;
-                const randomX = Math.random() * maxX;
-                const randomY = Math.random() * maxY;
-
-                noButton.style.position = 'absolute';
-                noButton.style.left = `${randomX}px`;
-                noButton.style.top = `${randomY}px`;
-            });
-
-            yesButton.addEventListener('click', () => {
+            yesButton.addEventListener('click', function() {
+                // Hide 'No' button when 'Yes' is clicked
                 noButton.style.display = 'none';
+
+                // Show the congratulations message
                 congratsMessage.style.display = 'block';
 
-                // Biometric animation sequence
-                const biometricMessage = document.getElementById('biometric-message');
-                const biometricConfirmation = document.getElementById('biometric-confirmation');
+                // Generate the QR Code for the invitation
+                const qrData = 'Welcome, You are Invited'; // Message for the QR code
+                const qrcodeContainer = document.getElementById('qrcode');
 
-                setTimeout(() => {
-                    biometricMessage.classList.add('show');
-                }, 500); // Show "Verifying Biometrics..." after 500ms
+                // Clear previous QR code if it exists
+                qrcodeContainer.innerHTML = '';
 
-                setTimeout(() => {
-                    biometricMessage.classList.remove('show');
-                    biometricConfirmation.classList.add('show');
-                }, 3000); // After 3 seconds, show "Biometrics Confirmed"
-
-                // QR Code Generation
-                setTimeout(() => {
-                    // Make the QR code container visible
-                    qrCodeContainer.style.visibility = 'visible';
-
-                    // Generate the QR code with the final confirmation message
-                    const qrData = "Thank you for accepting the invitation, Ms. Your attendance has been confirmed, see you there!";
-                    new QRCode(qrcodeContainer, {
-                        text: qrData,
-                        width: 200,
-                        height: 200,
-                        colorDark: "#000000",
-                        colorLight: "#ffffff",
-                    });
-                }, 3000); // Delay QR code generation until after biometrics confirmation
+                // Generate new QR code
+                const qrcode = new QRCode(qrcodeContainer, {
+                    text: qrData,
+                    width: 128,
+                    height: 128,
+                    colorDark: "#000000",
+                    colorLight: "#ffffff",
+                    correctLevel: QRCode.CorrectLevel.H
+                });
             });
 
             noButton.addEventListener('click', function(e) {
