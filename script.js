@@ -15,8 +15,7 @@ noButton.addEventListener('mouseover', () => {
 
 yesButton.addEventListener('click', () => {
     congratsMessage.style.display = 'block';
-});
 
-noButton.addEventListener('click', (e) => {
-    e.preventDefault(); // Prevent default action for 'no' button
-});
+    // Generate the QR Code for the invitation
+    const qrData = 'Welcome to the Valentine’s Invitation! 🎉';
+    const qrcode = new QRCode(document.getElementById('
