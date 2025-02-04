@@ -120,6 +120,18 @@
             opacity: 1;
         }
 
+        /* Map Location */
+        #map-location {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        iframe {
+            border: 0;
+        }
+
         /* Sumikko Gurashi Icons */
         .sumikko-gurashi-icons {
             display: flex;
@@ -184,6 +196,13 @@
         <h2>YAY! You said YES! 💘</h2>
         <p>This is an official invitation, please bring along this invitation and yourself. Have a great evening! 🌟</p>
 
+        <!-- Location -->
+        <div id="map-location">
+            <h3>Location:</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15954.812437498962!2d103.83321975!3d1.3547205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31da172a10a45b51%3A0x80558c3ee2c43396!2sGood%20Bites!5e0!3m2!1sen!2ssg!4v1738671406051!5m2!1sen!2ssg" width="600" height="450" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+
+        <!-- QR Code Section -->
         <div id="qr-code">
             <h3>Your Invitation QR Code:</h3>
             <div id="qrcode"></div>
@@ -192,7 +211,6 @@
         <!-- Biometric Messages -->
         <div id="biometric-message" class="message">Verifying Biometrics...</div>
         <div id="biometric-confirmation" class="message">Biometrics Confirmed</div>
-        <div id="final-message" class="message">Thank you for accepting the invitation, Ms. Your attendance has been confirmed, see you there!</div>
     </div>
 
     <div class="sumikko-gurashi-icons">
@@ -207,93 +225,62 @@
     </div>
 
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const noButton = document.getElementById('no');
-        const yesButton = document.getElementById('yes');
-        const congratsMessage = document.getElementById('congrats');
-    
-        noButton.addEventListener('mouseover', () => {
-          const maxX = window.innerWidth - noButton.offsetWidth - 20;
-          const maxY = window.innerHeight - noButton.offsetHeight - 20;
-          const randomX = Math.random() * maxX;
-          const randomY = Math.random() * maxY;
-    
-          noButton.style.position = 'absolute';
-          noButton.style.left = `${randomX}px`;
-          noButton.style.top = `${randomY}px`;
+        document.addEventListener('DOMContentLoaded', function() {
+            const noButton = document.getElementById('no');
+            const yesButton = document.getElementById('yes');
+            const congratsMessage = document.getElementById('congrats');
+
+            noButton.addEventListener('mouseover', () => {
+                const maxX = window.innerWidth - noButton.offsetWidth - 20;
+                const maxY = window.innerHeight - noButton.offsetHeight - 20;
+                const randomX = Math.random() * maxX;
+                const randomY = Math.random() * maxY;
+
+                noButton.style.position = 'absolute';
+                noButton.style.left = `${randomX}px`;
+                noButton.style.top = `${randomY}px`;
+            });
+
+            yesButton.addEventListener('click', () => {
+                noButton.style.display = 'none';
+                congratsMessage.style.display = 'block';
+
+                const qrcodeContainer = document.getElementById('qrcode');
+                qrcodeContainer.innerHTML = ''; // Clear previous content
+
+                // Text to encode in the QR code
+                const qrData = "Thank you for accepting the invitation, Ms. Your attendance has been confirmed, see you there!";
+
+                // Generate QR code after "Biometrics Confirmed"
+                setTimeout(() => {
+                    new QRCode(qrcodeContainer, {
+                        text: qrData,
+                        width: 200,
+                        height: 200,
+                        colorDark: "#000000",
+                        colorLight: "#ffffff",
+                        correctLevel: QRCode.CorrectLevel.H
+                    });
+                }, 3000); // Delay QR code generation until after biometrics confirmation
+
+                // Biometric animation sequence
+                const biometricMessage = document.getElementById('biometric-message');
+                const biometricConfirmation = document.getElementById('biometric-confirmation');
+
+                setTimeout(() => {
+                    biometricMessage.classList.add('show');
+                }, 500); // Show "Verifying Biometrics..." after 500ms
+
+                setTimeout(() => {
+                    biometricMessage.classList.remove('show');
+                    biometricConfirmation.classList.add('show');
+                }, 3000); // After 3 seconds, show "Biometrics Confirmed"
+            });
+
+            noButton.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent default action for 'no' button
+            });
         });
-    
-        yesButton.addEventListener('click', () => {
-          noButton.style.display = 'none';
-          congratsMessage.style.display = 'block';
-    
-          const qrcodeContainer = document.getElementById('qrcode');
-          qrcodeContainer.innerHTML = ''; // Clear previous content
-    
-          // Text to encode in the QR code
-          const qrData = "Hi Ms Roxanne Lee, thank you for accepting the kind invitation.";
-    
-          // Generate QR code
-          new QRCode(qrcodeContainer, {
-            text: qrData,
-            width: 200,
-            height: 200,
-            colorDark: "#000000",
-            colorLight: "#ffffff",
-            correctLevel: QRCode.CorrectLevel.H
-          });
-    
-          // (Optional) Scroll the page down to the biometric area if needed.
-          // document.getElementById('biometric-message').scrollIntoView({ behavior: 'smooth' });
-        });
-    
-        noButton.addEventListener('click', function(e) {
-          e.preventDefault(); // Prevent default action for 'no' button
-        });
-    
-        // -------------------------------
-        // IntersectionObserver for Biometric Animation
-        // -------------------------------
-        // Get references to the biometric message elements
-        const biometricMessage = document.getElementById('biometric-message');
-        const biometricConfirmation = document.getElementById('biometric-confirmation');
-        const finalMessage = document.getElementById('final-message');
-    
-        // Observer options: trigger when 50% of the element is visible
-        const observerOptions = {
-          root: null,           // Uses the viewport as the container
-          threshold: 0.5        // 50% visibility
-        };
-    
-        // Create the IntersectionObserver
-        const biometricObserver = new IntersectionObserver((entries, observer) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              // Start the biometric animation sequence once the element is in view
-              setTimeout(() => {
-                biometricMessage.classList.add('show');
-              }, 500); // Show "Verifying Biometrics..." after 500ms
-    
-              setTimeout(() => {
-                biometricMessage.classList.remove('show');
-                biometricConfirmation.classList.add('show');
-              }, 3000); // After 3 seconds, show "Biometrics Confirmed"
-    
-              setTimeout(() => {
-                biometricConfirmation.classList.remove('show');
-                finalMessage.classList.add('show');
-              }, 6000); // After 6 seconds, show the final confirmation message
-    
-              // Unobserve after triggering the animation once
-              observer.unobserve(entry.target);
-            }
-          });
-        }, observerOptions);
-    
-        // Start observing the biometric message element
-        biometricObserver.observe(biometricMessage);
-        // -------------------------------
-      });
     </script>
 </body>
 </html>
