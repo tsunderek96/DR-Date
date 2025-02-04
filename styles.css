@@ -79,6 +79,16 @@ body {
     animation: fadeIn 2s;
 }
 
+/* Google Maps Container */
+#map-location {
+    margin-top: 20px;
+}
+
+/* QR Code Container */
+#qr-code {
+    margin-top: 20px;
+}
+
 /* Cute character animation */
 .cute-character {
     position: absolute;
