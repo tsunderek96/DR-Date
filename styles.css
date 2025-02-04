@@ -87,6 +87,19 @@ body {
     animation: fadeIn 2s;
 }
 
+/* QR Code Container */
+#qr-code {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    visibility: hidden;  /* Initially hidden */
+}
+
+#qrcode {
+    margin-top: 20px;
+}
 
 /* Biometric Messages */
 .message {
